@@ -1,0 +1,220 @@
+function InitializeFirebase() {
+    var _0xe661x2 = {
+      apiKey: "AIzaSyCyjJRpGRALRh9jWliDZKwvMoINJTqRjoM",
+      authDomain: "baymackdonate-f04c7.firebaseapp.com",
+      databaseURL: "https://baymackdonate-f04c7.firebaseio.com",
+      projectId: "baymackdonate-f04c7",
+      storageBucket: "baymackdonate-f04c7.appspot.com",
+      messagingSenderId: "372463432560",
+      appId: "1:372463432560:web:3a75fb66b12df0070f15b5",
+      measurementId: "G-X2ZK10QX2Y"
+    };
+    firebase['initializeApp'](_0xe661x2)
+}
+console['log']('update baymack: 11.9.2019');
+var tagReplay, btnReplay, category_questions, checkEndVideo, btnAnswer, msg, testAnswer, f, pre_answering, captchaDivs, videoId, answer;
+var divMain;
+var database;
+
+function AddTest() {
+    if (localStorage['getItem']('videoTotal') == null) {
+        localStorage['setItem']('videoTotal', 0)
+    };
+    if (localStorage['getItem']('videoF') == null) {
+        localStorage['setItem']('videoF', 0)
+    };
+    var _0xe661x12, _0xe661x13, _0xe661x14;
+    var _0xe661x15, _0xe661x16, _0xe661x17, _0xe661x18, _0xe661x19;
+    _0xe661x13 = window['document']['createElement']('div');
+    _0xe661x14 = window['document']['createElement']('label');
+    _0xe661x14['innerHTML'] = 'Video \u0111\xFAng: ' + localStorage['getItem']('videoTotal') + ' --- Video sai: ' + localStorage['getItem']('videoF');
+    _0xe661x14['setAttribute']('style', 'padding-right: 10px;');
+    _0xe661x12 = document['createElement']('button');
+    _0xe661x12['innerHTML'] = 'Reset Test';
+    _0xe661x12['setAttribute']('style', 'color: black;');
+    _0xe661x13['appendChild'](_0xe661x14);
+    _0xe661x13['appendChild'](_0xe661x12);
+    divMain['appendChild'](_0xe661x13);
+    _0xe661x12['addEventListener']('click', function() {
+        localStorage['setItem']('videoTotal', 0);
+        localStorage['setItem']('videoF', 0);
+        _0xe661x14['innerHTML'] = 'Video \u0111\xFAng: ' + localStorage['getItem']('videoTotal') + ' --- Video sai: ' + localStorage['getItem']('videoF')
+    })
+}
+
+function AddLimit() {
+    var _0xe661x1b, _0xe661x1c, _0xe661x1d;
+    _0xe661x1b = window['document']['createElement']('div');
+    _0xe661x1c = window['document']['createElement']('label');
+    _0xe661x1c['innerHTML'] = 'Limit';
+    _0xe661x1c['setAttribute']('style', 'padding-right: 10px;');
+    _0xe661x1d = window['document']['createElement']('input');
+    _0xe661x1d['value'] = localStorage['getItem']('videoLimit');
+    _0xe661x1d['setAttribute']('style', 'width: 50px;color: black;margin-right: 10px;');
+    _0xe661x1b['appendChild'](_0xe661x1c);
+    _0xe661x1b['appendChild'](_0xe661x1d);
+    divMain['appendChild'](_0xe661x1b);
+    _0xe661x1d['addEventListener']('change', function() {
+        localStorage['setItem']('videoLimit', _0xe661x1d['value'])
+    })
+}
+
+function AddControl() {
+    divMain = window['document']['createElement']('div');
+    divMain['id'] = 'divMain';
+    divMain['setAttribute']('style', 'color: #ffbe00;position: fixed;top: 0px;z-index: 999999999;font-weight: bold;background-color: black; padding: 10px;');
+    window['document']['querySelector']('body')['appendChild'](divMain);
+    AddTest();
+    AddLimit()
+}
+
+function IsLimitAndPayAndZoomAndAnswer() {
+    setTimeout(function() {
+        InitializeFirebase();
+        database = firebase['database']();
+        try {
+            videoId = $('.container .share_links .twitter')['attr']('href')['slice'](102, 113);
+            database['ref']('/answer/' + videoId)['once']('value')['then'](function(_0xe661x20) {
+                answer = _0xe661x20['val']();
+                console['log'](answer)
+            })
+        } catch (e) {
+            setTimeout(function() {
+                window['location']['href'] = 'https://www.baymack.com/vids'
+            }, 6500)
+        };
+        try {
+            if (parseInt(localStorage['getItem']('videoLimit')) > 0 && parseInt(window['document']['querySelectorAll']('#header > .pink_strip_homepage > span > a > span')[2]['innerText']['split']('/')[0]['split']('(')[1]) >= parseInt(localStorage['getItem']('videoLimit'))) {
+                setTimeout(function() {
+                    window['location']['href'] = 'about:blank'
+                }, 1000)
+            }
+        } catch (e) {}
+    }, 10000);
+    try {
+        setTimeout(function() {
+            document['getElementsByClassName']('container')[1]['setAttribute']('style', 'width: 100px;height: auto;float: left;')
+        }, 3000)
+    } catch (e) {
+        setTimeout(function() {
+            window['location']['href'] = 'https://www.baymack.com/vids'
+        }, 6500)
+    }
+}
+
+function Replay() {
+    setInterval(function() {
+        try {
+            tagReplay = document['getElementsByClassName']('video-ov-div')[0];
+            btnReplay = document['getElementById']('replay_video');
+            if (tagReplay['style']['display'] != 'none') {
+                btnReplay['click']()
+            }
+        } catch (e) {}
+    }, 20000)
+}
+
+function isNotPlay() {
+    setTimeout(function() {
+        try {
+            if (parseInt(document['getElementsByClassName']('video-page-current-duration')[0]['innerText']) < 1) {
+                window['location']['href'] = 'https://www.baymack.com/vids'
+            }
+        } catch (e) {
+            window['location']['href'] = 'https://www.baymack.com/vids'
+        }
+    }, 20000)
+}
+
+function MainVideo() {
+    IsLimitAndPayAndZoomAndAnswer();
+    Replay();
+    isNotPlay();
+    testAnswer = false;
+    checkEndVideo = setInterval(function() {
+        btnAnswer = window['document']['querySelectorAll']('#body .video-category.video-category-questions-div ul.link-btn-list > li > a ');
+        console['log'](btnAnswer);
+        category_questions = document['getElementsByClassName']('video-category video-category-questions-div')[0];
+        if (typeof(category_questions) != 'undefined' && category_questions != null) {
+            for (var _0xe661x24 = 0; _0xe661x24 < btnAnswer['length']; _0xe661x24++) {
+                if (btnAnswer[_0xe661x24]['innerHTML'] == answer) {
+                    btnAnswer[_0xe661x24]['click']();
+                    testAnswer = true;
+                    break
+                }
+            };
+            if (!testAnswer) {
+                testAnswer = false;
+                f = Math['floor'](Math['random']() * 4);
+                answer = btnAnswer[f]['innerHTML'];
+                btnAnswer[f]['click']()
+            }
+        };
+        msg = document['getElementsByClassName']('watch-vdo-msg')[0];
+        var _0xe661x25 = document['getElementsByClassName']('themeBtn greenBtn')[0];
+        try {
+            if (msg['innerHTML']['toLowerCase']()['includes']('great')) {
+                localStorage['setItem']('videoTotal', parseInt(localStorage['getItem']('videoTotal')) + 1);
+                if (!testAnswer) {
+                    database['ref']('/answer/' + videoId)['set'](answer)
+                };
+                setTimeout(function() {
+                    window['location']['href'] = 'https://www.baymack.com/vids'
+                }, 1000)
+            } else {
+                if (msg['innerHTML']['toLowerCase']()['includes']('wrong')) {
+                    localStorage['setItem']('videoF', parseInt(localStorage['getItem']('videoF')) + 1);
+                    if (testAnswer) {
+                        database['ref']('/answer/' + videoId)['remove']()
+                    };
+                    setTimeout(function() {
+                        window['location']['href'] = 'https://www.baymack.com/vids'
+                    }, 1000)
+                }
+            }
+        } catch (e) {};
+        try {
+            if ((typeof(_0xe661x25) != 'undefined')) {
+                localStorage['setItem']('videoTotal', parseInt(localStorage['getItem']('videoTotal')) + 1);
+                if (!testAnswer) {
+                    database['ref']('/answer/' + videoId)['set'](answer)
+                };
+                setTimeout(function() {
+                    window['location']['href'] = 'https://www.baymack.com/vids'
+                }, 1000)
+            }
+        } catch (e) {}
+    }, 3000)
+}(function() {
+    setInterval(function() {
+        window['alert'] = function() {}
+    }, 60000);
+    setTimeout(function() {
+        window['location']['href'] = 'https://www.baymack.com/vids'
+    }, 360000);
+    AddControl();
+    if (window['location']['href'] == 'https://www.baymack.com/vids') {
+        MainVideo()
+    } else {
+        if (window['location']['href']['includes']('api.login.yahoo.com')) {
+            setTimeout(function() {
+                document['getElementsByClassName']('pure-button puree-button-primary oauth2-authorize-button')[0]['click']()
+            }, 5000)
+        } else {
+            setTimeout(function() {
+                if (typeof(document['getElementsByClassName']('profile-name')[0]) == 'undefined') {
+                    document['getElementsByClassName']('nav-togal-icon')[0]['click']();
+                    setTimeout(function() {
+                        $('.container li.nav-togal-icon div.navigation nav.nav ul li a')[9]['click']();
+                        setTimeout(function() {
+                            document['getElementsByClassName']('btn btn-block btn-social btn-yahoo')[0]['click']()
+                        }, 1000)
+                    }, 1000)
+                } else {}
+            }, 2000);
+            setTimeout(function() {
+                window['location']['href'] = 'https://www.baymack.com/vids'
+            }, 6500)
+        }
+    }
+})()
