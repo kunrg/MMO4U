@@ -9,195 +9,193 @@ function InitializeFirebase() {
       appId: "1:372463432560:web:3a75fb66b12df0070f15b5",
       measurementId: "G-X2ZK10QX2Y"
     };
-    firebase['initializeApp'](_0x9586x2)
+    firebase.initializeApp(_0x9586x2)
 }
-console['log']('update skylom: 4.9.2019');
+console.log("update skylom: 4.9.2019");
 var tagReplay, btnReplay, category_questions, checkEndVideo, btnAnswer, msg, testAnswer, f, pre_answering, captchaDivs, videoId, answer;
 var divMain, selPay;
 var database;
 
 function AddTest() {
-    if (localStorage['getItem']('videoTotal') == null) {
-        localStorage['setItem']('videoTotal', 0)
+    if (localStorage.getItem("videoTotal") == null) {
+        localStorage.setItem("videoTotal", 0)
     };
-    if (localStorage['getItem']('videoF') == null) {
-        localStorage['setItem']('videoF', 0)
+    if (localStorage.getItem("videoF") == null) {
+        localStorage.setItem("videoF", 0)
     };
     var _0x9586x13, _0x9586x14, _0x9586x15;
     var _0x9586x16, _0x9586x17, _0x9586x18, _0x9586x19, _0x9586x1a;
-    _0x9586x14 = window['document']['createElement']('div');
-    _0x9586x15 = window['document']['createElement']('label');
-    _0x9586x15['innerHTML'] = 'Video \u0111\xFAng: ' + localStorage['getItem']('videoTotal') + ' --- Video sai: ' + localStorage['getItem']('videoF');
-    _0x9586x15['setAttribute']('style', 'padding-right: 10px;');
-    _0x9586x13 = document['createElement']('button');
-    _0x9586x13['innerHTML'] = 'Reset Test';
-    _0x9586x13['setAttribute']('style', 'color: black;');
-    _0x9586x14['appendChild'](_0x9586x15);
-    _0x9586x14['appendChild'](_0x9586x13);
-    divMain['appendChild'](_0x9586x14);
-    _0x9586x13['addEventListener']('click', function() {
-        localStorage['setItem']('videoTotal', 0);
-        localStorage['setItem']('videoF', 0);
-        _0x9586x15['innerHTML'] = 'Video \u0111\xFAng: ' + localStorage['getItem']('videoTotal') + ' --- Video sai: ' + localStorage['getItem']('videoF')
+    _0x9586x14 = window.document.createElement("div");
+    _0x9586x15 = window.document.createElement("label");
+    _0x9586x15.innerHTML = "Video đúng: " + localStorage.getItem("videoTotal") + " --- Video sai: " + localStorage.getItem("videoF");
+    _0x9586x15.setAttribute("style", "padding-right: 10px;");
+    _0x9586x13 = document.createElement("button");
+    _0x9586x13.innerHTML = "Reset Test";
+    _0x9586x13.setAttribute("style", "color: black;");
+    _0x9586x14.appendChild(_0x9586x15);
+    _0x9586x14.appendChild(_0x9586x13);
+    divMain.appendChild(_0x9586x14);
+    _0x9586x13.addEventListener("click", function () {
+        localStorage.setItem("videoTotal", 0);
+        localStorage.setItem("videoF", 0);
+        _0x9586x15.innerHTML = "Video đúng: " + localStorage.getItem("videoTotal") + " --- Video sai: " + localStorage.getItem("videoF")
     })
 }
 
 function AddLimit() {
     var _0x9586x1c, _0x9586x1d, _0x9586x1e;
-    _0x9586x1c = window['document']['createElement']('div');
-    _0x9586x1d = window['document']['createElement']('label');
-    _0x9586x1d['innerHTML'] = 'Limit';
-    _0x9586x1d['setAttribute']('style', 'padding-right: 10px;');
-    _0x9586x1e = window['document']['createElement']('input');
-    _0x9586x1e['value'] = localStorage['getItem']('videoLimit');
-    _0x9586x1e['setAttribute']('style', 'width: 50px;color: black;margin-right: 10px;');
-    _0x9586x1c['appendChild'](_0x9586x1d);
-    _0x9586x1c['appendChild'](_0x9586x1e);
-    divMain['appendChild'](_0x9586x1c);
-    _0x9586x1e['addEventListener']('change', function() {
-        localStorage['setItem']('videoLimit', _0x9586x1e['value'])
+    _0x9586x1c = window.document.createElement("div");
+    _0x9586x1d = window.document.createElement("label");
+    _0x9586x1d.innerHTML = "Limit";
+    _0x9586x1d.setAttribute("style", "padding-right: 10px;");
+    _0x9586x1e = window.document.createElement("input");
+    _0x9586x1e.value = localStorage.getItem("videoLimit");
+    _0x9586x1e.setAttribute("style", "width: 50px;color: black;margin-right: 10px;");
+    _0x9586x1c.appendChild(_0x9586x1d);
+    _0x9586x1c.appendChild(_0x9586x1e);
+    divMain.appendChild(_0x9586x1c);
+    _0x9586x1e.addEventListener("change", function () {
+        localStorage.setItem("videoLimit", _0x9586x1e.value)
     })
 }
 
 function AddPay() {
     var _0x9586x20, _0x9586x21, _0x9586x22, _0x9586x23, _0x9586x24, _0x9586x25, _0x9586x26, _0x9586x27, _0x9586x28, _0x9586x29, _0x9586x2a;
-    _0x9586x20 = window['document']['createElement']('div');
-    _0x9586x21 = window['document']['createElement']('label');
-    _0x9586x21['innerHTML'] = 'Auto Pay';
-    _0x9586x21['setAttribute']('style', 'padding-right: 10px;');
-    _0x9586x22 = window['document']['createElement']('input');
-    _0x9586x22['type'] = 'checkbox';
-    _0x9586x22['setAttribute']('style', 'width: 15px;height: 15px;vertical-align: bottom;');
-    _0x9586x22['checked'] = JSON['parse'](localStorage['getItem']('isAutoPay'));
-    _0x9586x20['appendChild'](_0x9586x21);
-    _0x9586x20['appendChild'](_0x9586x22);
-    divMain['appendChild'](_0x9586x20);
-    _0x9586x23 = window['document']['createElement']('div');
-    selPay = document['createElement']('select');
-    _0x9586x29 = document['createElement']('option');
-    _0x9586x29['text'] = '0.1;_0x9586x2a= document['
-    createElement ']('
-    option ');_0x9586x2a['
-    text ']= '
-    1;
-    selPay['add'](_0x9586x29);
-    selPay['add'](_0x9586x2a);
-    selPay['selectedIndex'] = localStorage['getItem']('selPay');
-    _0x9586x24 = window['document']['createElement']('label');
-    _0x9586x24['innerHTML'] = 'Min Pay';
-    _0x9586x24['setAttribute']('style', 'padding-right: 10px;');
-    _0x9586x25 = window['document']['createElement']('input');
-    _0x9586x25['value'] = localStorage['getItem']('minPay');
-    _0x9586x25['setAttribute']('style', 'width: 50px;color: black;margin-right: 10px;');
-    _0x9586x26 = window['document']['createElement']('div');
-    _0x9586x27 = window['document']['createElement']('label');
-    _0x9586x27['innerHTML'] = 'Mail';
-    _0x9586x27['setAttribute']('style', 'padding-right: 10px;');
-    _0x9586x28 = window['document']['createElement']('input');
-    _0x9586x28['value'] = localStorage['getItem']('mail');
-    _0x9586x28['setAttribute']('style', 'width: 250px;color: black;margin-right: 10px;');
-    if (_0x9586x22['checked']) {
-        _0x9586x23['style']['display'] = 'block';
-        _0x9586x26['style']['display'] = 'block'
+    _0x9586x20 = window.document.createElement("div");
+    _0x9586x21 = window.document.createElement("label");
+    _0x9586x21.innerHTML = "Auto Pay";
+    _0x9586x21.setAttribute("style", "padding-right: 10px;");
+    _0x9586x22 = window.document.createElement("input");
+    _0x9586x22.type = "checkbox";
+    _0x9586x22.setAttribute("style", "width: 15px;height: 15px;vertical-align: bottom;");
+    _0x9586x22.checked = JSON.parse(localStorage.getItem("isAutoPay"));
+    _0x9586x20.appendChild(_0x9586x21);
+    _0x9586x20.appendChild(_0x9586x22);
+    divMain.appendChild(_0x9586x20);
+    _0x9586x23 = window.document.createElement("div");
+    selPay = document.createElement("select");
+    _0x9586x29 = document.createElement("option");
+    _0x9586x29.text = "0.1$";
+    _0x9586x2a = document.createElement("option");
+    _0x9586x2a.text = "1$";
+    selPay.add(_0x9586x29);
+    selPay.add(_0x9586x2a);
+    selPay.selectedIndex = localStorage.getItem("selPay");
+    _0x9586x24 = window.document.createElement("label");
+    _0x9586x24.innerHTML = "Min Pay";
+    _0x9586x24.setAttribute("style", "padding-right: 10px;");
+    _0x9586x25 = window.document.createElement("input");
+    _0x9586x25.value = localStorage.getItem("minPay");
+    _0x9586x25.setAttribute("style", "width: 50px;color: black;margin-right: 10px;");
+    _0x9586x26 = window.document.createElement("div");
+    _0x9586x27 = window.document.createElement("label");
+    _0x9586x27.innerHTML = "Mail";
+    _0x9586x27.setAttribute("style", "padding-right: 10px;");
+    _0x9586x28 = window.document.createElement("input");
+    _0x9586x28.value = localStorage.getItem("mail");
+    _0x9586x28.setAttribute("style", "width: 250px;color: black;margin-right: 10px;");
+    if (_0x9586x22.checked) {
+        _0x9586x23.style.display = "block";
+        _0x9586x26.style.display = "block"
     } else {
-        _0x9586x23['style']['display'] = 'none';
-        _0x9586x26['style']['display'] = 'none'
+        _0x9586x23.style.display = "none";
+        _0x9586x26.style.display = "none"
     };
-    _0x9586x23['appendChild'](selPay);
-    _0x9586x23['appendChild'](_0x9586x24);
-    _0x9586x23['appendChild'](_0x9586x25);
-    _0x9586x26['appendChild'](_0x9586x27);
-    _0x9586x26['appendChild'](_0x9586x28);
-    divMain['appendChild'](_0x9586x23);
-    divMain['appendChild'](_0x9586x26);
-    _0x9586x22['addEventListener']('change', function() {
-        localStorage['setItem']('isAutoPay', _0x9586x22['checked']);
-        if (_0x9586x22['checked']) {
-            _0x9586x23['style']['display'] = 'block';
-            _0x9586x26['style']['display'] = 'block'
+    _0x9586x23.appendChild(selPay);
+    _0x9586x23.appendChild(_0x9586x24);
+    _0x9586x23.appendChild(_0x9586x25);
+    _0x9586x26.appendChild(_0x9586x27);
+    _0x9586x26.appendChild(_0x9586x28);
+    divMain.appendChild(_0x9586x23);
+    divMain.appendChild(_0x9586x26);
+    _0x9586x22.addEventListener("change", function () {
+        localStorage.setItem("isAutoPay", _0x9586x22.checked);
+        if (_0x9586x22.checked) {
+            _0x9586x23.style.display = "block";
+            _0x9586x26.style.display = "block"
         } else {
-            _0x9586x23['style']['display'] = 'none';
-            _0x9586x26['style']['display'] = 'none'
+            _0x9586x23.style.display = "none";
+            _0x9586x26.style.display = "none"
         }
     });
-    _0x9586x25['addEventListener']('change', function() {
-        localStorage['setItem']('minPay', _0x9586x25['value'])
+    _0x9586x25.addEventListener("change", function () {
+        localStorage.setItem("minPay", _0x9586x25.value)
     });
-    _0x9586x28['addEventListener']('change', function() {
-        localStorage['setItem']('mail', _0x9586x28['value'])
+    _0x9586x28.addEventListener("change", function () {
+        localStorage.setItem("mail", _0x9586x28.value)
     });
-    selPay['addEventListener']('change', function() {
-        localStorage['setItem']('selPay', selPay['selectedIndex'])
+    selPay.addEventListener("change", function () {
+        localStorage.setItem("selPay", selPay.selectedIndex)
     })
 }
 
 function AddControl() {
-    divMain = window['document']['createElement']('div');
-    divMain['id'] = 'divMain';
-    divMain['setAttribute']('style', 'color: #ffbe00;position: fixed;top: 0px;z-index: 999999999;font-weight: bold;background-color: black; padding: 10px;');
-    window['document']['querySelector']('body')['appendChild'](divMain);
+    divMain = window.document.createElement("div");
+    divMain.id = "divMain";
+    divMain.setAttribute("style", "color: #ffbe00;position: fixed;top: 0px;z-index: 999999999;font-weight: bold;background-color: black; padding: 10px;");
+    window.document.querySelector("body").appendChild(divMain);
     AddTest();
     AddLimit();
     AddPay()
 }
 
 function IsLimitAndPayAndZoomAndAnswer() {
-    setTimeout(function() {
+    setTimeout(function () {
         InitializeFirebase();
-        database = firebase['database']();
+        database = firebase.database();
         try {
-            videoId = document['getElementById']('video_player')['src']['slice'](30, 41);
-            database['ref']('/answer/' + videoId)['once']('value')['then'](function(_0x9586x2d) {
-                answer = _0x9586x2d['val']();
-                console['log'](answer)
+            videoId = document.getElementById("video_player").src.slice(30, 41);
+            database.ref("/answer/" + videoId).once("value").then(function (_0x9586x2d) {
+                answer = _0x9586x2d.val();
+                console.log(answer)
             })
         } catch (e) {
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
+            setTimeout(function () {
+                window.location.href = "https://www.skylom.com/videos"
             }, 6500)
         };
         try {
-            if (parseInt(localStorage['getItem']('videoLimit')) > 0 && parseInt(window['document']['querySelectorAll']('#header > div.pink_strip_homepage > span.top_strip_custom_message > span.top_strip_customer_message_css > span > span')[0]['innerText']['split']('-')[1]['split']('/')[0]) >= parseInt(localStorage['getItem']('videoLimit'))) {
-                setTimeout(function() {
-                    window['location']['href'] = 'about:blank'
+            if (parseInt(localStorage.getItem("videoLimit")) > 0 && parseInt(window.document.querySelectorAll("#header > div.pink_strip_homepage > span.top_strip_custom_message > span.top_strip_customer_message_css > span > span")[0].innerText.split("-")[1].split("/")[0]) >= parseInt(localStorage.getItem("videoLimit"))) {
+                setTimeout(function () {
+                    window.location.href = "about:blank"
                 }, 1000)
             }
         } catch (e) {};
         try {
-            if (parseFloat(localStorage['getItem']('minPay')) <= parseFloat(document['getElementsByClassName']('button class-for-instant-baymack-videos header-button')[0]['innerText']['split'](' ')[0]) && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-                window['location']['href'] = 'https://www.skylom.com/prizes'
+            if (parseFloat(localStorage.getItem("minPay")) <= parseFloat(document.getElementsByClassName("button class-for-instant-baymack-videos header-button")[0].innerText.split(" ")[0]) && JSON.parse(localStorage.getItem("isAutoPay"))) {
+                window.location.href = "https://www.skylom.com/prizes"
             }
         } catch (e) {}
     }, 10000);
     try {
-        document['getElementsByClassName']('watch-video')[0]['setAttribute']('style', 'width: 100px;height: auto;float: left;')
+        document.getElementsByClassName("watch-video")[0].setAttribute("style", "width: 100px;height: auto;float: left;")
     } catch (e) {
-        setTimeout(function() {
-            window['location']['href'] = 'https://www.skylom.com/videos'
+        setTimeout(function () {
+            window.location.href = "https://www.skylom.com/videos"
         }, 6500)
     }
 }
 
 function Replay() {
-    setInterval(function() {
+    setInterval(function () {
         try {
-            tagReplay = document['getElementsByClassName']('video-ov-div')[0];
-            btnReplay = document['getElementById']('replay_video');
-            if (tagReplay['style']['display'] != 'none') {
-                btnReplay['click']()
+            tagReplay = document.getElementsByClassName("video-ov-div")[0];
+            btnReplay = document.getElementById("replay_video");
+            if (tagReplay.style.display != "none") {
+                btnReplay.click()
             }
         } catch (e) {}
     }, 20000)
 }
 
 function isNotPlay() {
-    setTimeout(function() {
+    setTimeout(function () {
         try {
-            if (parseInt(document['getElementsByClassName']('video-page-current-duration')[0]['innerText']) < 1) {
-                window['location']['href'] = 'https://www.skylom.com/videos'
+            if (parseInt(document.getElementsByClassName("video-page-current-duration")[0].innerText) < 1) {
+                window.location.href = "https://www.skylom.com/videos"
             }
         } catch (e) {
-            window['location']['href'] = 'https://www.skylom.com/videos'
+            window.location.href = "https://www.skylom.com/videos"
         }
     }, 20000)
 }
@@ -206,52 +204,52 @@ function MainVideo() {
     IsLimitAndPayAndZoomAndAnswer();
     Replay();
     isNotPlay();
-    pre_answering = document['getElementsByClassName']('pre-answering')[0];
-    category_questions = document['getElementsByClassName']('video-category video-category-questions-div')[0];
-    captchaDivs = document['getElementsByClassName']('captchaDivs')[0];
+    pre_answering = document.getElementsByClassName("pre-answering")[0];
+    category_questions = document.getElementsByClassName("video-category video-category-questions-div")[0];
+    captchaDivs = document.getElementsByClassName("captchaDivs")[0];
     btnAnswer = [];
-    var _0x9586x31 = window['document']['querySelectorAll']('#body .video-category.video-category-questions-div ul.link-btn-list > li > a');
-    for (var _0x9586x32 = 0; _0x9586x32 < _0x9586x31['length']; _0x9586x32++) {
-        if (_0x9586x31[_0x9586x32]['className'] != 'border-btn') {
-            btnAnswer['push'](_0x9586x31[_0x9586x32])
+    var _0x9586x31 = window.document.querySelectorAll("#body .video-category.video-category-questions-div ul.link-btn-list > li > a");
+    for (var _0x9586x32 = 0; _0x9586x32 < _0x9586x31.length; _0x9586x32++) {
+        if (_0x9586x31[_0x9586x32].className != "border-btn") {
+            btnAnswer.push(_0x9586x31[_0x9586x32])
         }
     };
-    msg = document['getElementsByClassName']('watch-vdo-msg')[0];
+    msg = document.getElementsByClassName("watch-vdo-msg")[0];
     testAnswer = false;
-    checkEndVideo = setInterval(function() {
-        if (category_questions['style']['display'] == 'block' && pre_answering['style']['display'] != 'none' && captchaDivs['style']['display'] == 'none') {
-            for (var _0x9586x33 = 0; _0x9586x33 < btnAnswer['length']; _0x9586x33++) {
-                if (btnAnswer[_0x9586x33]['innerHTML']['trim']() == answer) {
-                    btnAnswer[_0x9586x33]['click']();
+    checkEndVideo = setInterval(function () {
+        if (category_questions.style.display == "block" && pre_answering.style.display != "none" && captchaDivs.style.display == "none") {
+            for (var _0x9586x33 = 0; _0x9586x33 < btnAnswer.length; _0x9586x33++) {
+                if (btnAnswer[_0x9586x33].innerHTML.trim() == answer) {
+                    btnAnswer[_0x9586x33].click();
                     testAnswer = true;
                     break
                 }
             };
             if (!testAnswer) {
                 testAnswer = false;
-                f = Math['floor'](Math['random']() * 4);
-                answer = btnAnswer[f]['innerHTML'];
-                btnAnswer[f]['click']()
+                f = Math.floor(Math.random() * 4);
+                answer = btnAnswer[f].innerHTML;
+                btnAnswer[f].click()
             }
         };
-        if (msg['innerHTML']['toLowerCase']()['includes']('correct') || msg['innerHTML']['toLowerCase']()['includes']('complete') || msg['innerHTML']['toLowerCase']()['includes']('congrats')) {
+        if (msg.innerHTML.toLowerCase().includes("correct") || msg.innerHTML.toLowerCase().includes("complete") || msg.innerHTML.toLowerCase().includes("congrats")) {
             clearInterval(checkEndVideo);
-            localStorage['setItem']('videoTotal', parseInt(localStorage['getItem']('videoTotal')) + 1);
+            localStorage.setItem("videoTotal", parseInt(localStorage.getItem("videoTotal")) + 1);
             if (!testAnswer) {
-                database['ref']('/answer/' + videoId)['set'](answer)
+                database.ref("/answer/" + videoId).set(answer)
             };
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
+            setTimeout(function () {
+                window.location.href = "https://www.skylom.com/videos"
             }, 1000)
         } else {
-            if (msg['innerHTML']['toLowerCase']()['includes']('wrong')) {
+            if (msg.innerHTML.toLowerCase().includes("wrong")) {
                 clearInterval(checkEndVideo);
-                localStorage['setItem']('videoF', parseInt(localStorage['getItem']('videoF')) + 1);
+                localStorage.setItem("videoF", parseInt(localStorage.getItem("videoF")) + 1);
                 if (testAnswer) {
-                    database['ref']('/answer/' + videoId)['remove']()
+                    database.ref("/answer/" + videoId).remove()
                 };
-                setTimeout(function() {
-                    window['location']['href'] = 'https://www.skylom.com/videos'
+                setTimeout(function () {
+                    window.location.href = "https://www.skylom.com/videos"
                 }, 500)
             }
         }
@@ -259,678 +257,62 @@ function MainVideo() {
 }
 
 function MainPay() {
-    setTimeout(function() {
-        window['location']['href'] = 'https://www.skylom.com/videos'
+    setTimeout(function () {
+        window.location.href = "https://www.skylom.com/videos"
     }, 30000);
     try {
-        if (parseFloat(localStorage['getItem']('minPay')) <= parseFloat(document['getElementsByClassName']('blnc')[0]['innerText']['split'](' ')[2]) && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-            setTimeout(function() {
-                document['getElementsByClassName']('themeBtn small redeemButton')[selPay['selectedIndex']]['click']();
-                setTimeout(function() {
-                    document['getElementById']('userEmail')['value'] = localStorage['getItem']('mail');
-                    setTimeout(function() {
-                        document['getElementById']('subGiftCard')['click']();
-                        setTimeout(function() {
-                            window['location']['href'] = 'https://www.skylom.com/videos'
+        if (parseFloat(localStorage.getItem("minPay")) <= parseFloat(document.getElementsByClassName("blnc")[0].innerText.split(" ")[2]) && JSON.parse(localStorage.getItem("isAutoPay"))) {
+            setTimeout(function () {
+                document.getElementsByClassName("themeBtn small redeemButton")[selPay.selectedIndex].click();
+                setTimeout(function () {
+                    document.getElementById("userEmail").value = localStorage.getItem("mail");
+                    setTimeout(function () {
+                        document.getElementById("subGiftCard").click();
+                        setTimeout(function () {
+                            window.location.href = "https://www.skylom.com/videos"
                         }, 2000)
                     }, 2000)
                 }, 1000)
             }, 5000)
         } else {
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
+            setTimeout(function () {
+                window.location.href = "https://www.skylom.com/videos"
             }, 2000)
         }
     } catch (e) {
-        setTimeout(function() {
-            window['location']['href'] = 'https://www.skylom.com/videos'
+        setTimeout(function () {
+            window.location.href = "https://www.skylom.com/videos"
         }, 2000)
     }
-}(function() {
-    setInterval(function() {
-        window['alert'] = function() {}
+}(function () {
+    setInterval(function () {
+        window.alert = function () {}
     }, 60000);
-    setTimeout(function() {
-        window['location']['href'] = 'https://www.skylom.com/videos'
+    setTimeout(function () {
+        window.location.href = "https://www.skylom.com/videos"
     }, 360000);
     AddControl();
-    if (window['location']['href'] == 'https://www.skylom.com/videos') {
+    if (window.location.href == "https://www.skylom.com/videos") {
         MainVideo()
     } else {
-        if (window['location']['href'] == 'https://www.skylom.com/prizes' && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
+        if (window.location.href == "https://www.skylom.com/prizes" && JSON.parse(localStorage.getItem("isAutoPay"))) {
             MainPay()
         } else {
-            if (window['location']['href'] == 'https://www.skylom.com/?login=true&redirect_url=videos') {
-                setTimeout(function() {
-                    document['getElementsByClassName']('login-with-facebook-button login-popup-login-url')[0]['click']()
+            if (window.location.href == "https://www.skylom.com/?login=true&redirect_url=videos") {
+                setTimeout(function () {
+                    document.getElementsByClassName("login-with-facebook-button login-popup-login-url")[0].click()
                 }, 5000)
             } else {
-                if (window['location']['href']['includes']('accounts.google.com')) {
-                    setTimeout(function() {
-                        document['getElementsByClassName']('lCoei YZVTmd SmR8')[0]['click']()
+                if (window.location.href.includes("accounts.google.com")) {
+                    setTimeout(function () {
+                        document.getElementsByClassName("lCoei YZVTmd SmR8")[0].click()
                     }, 5000)
                 } else {
-                    setTimeout(function() {
-                        window['location']['href'] = 'https://www.skylom.com/videos'
+                    setTimeout(function () {
+                        window.location.href = "https://www.skylom.com/videos"
                     }, 6500)
                 }
             }
         }
     }
-})();
-_0x9586x2a = document['createElement']('option');
-_0x9586x2a['text'] = _0xdd5d[47];
-selPay['add'](_0x9586x29);
-selPay['add'](_0x9586x2a);
-selPay['selectedIndex'] = localStorage['getItem']('selPay');
-_0x9586x24 = window['document']['createElement']('label');
-_0x9586x24['innerHTML'] = 'Min Pay';
-_0x9586x24['setAttribute']('style', 'padding-right: 10px;');
-_0x9586x25 = window['document']['createElement']('input');
-_0x9586x25['value'] = localStorage['getItem']('minPay');
-_0x9586x25['setAttribute']('style', 'width: 50px;color: black;margin-right: 10px;');
-_0x9586x26 = window['document']['createElement']('div');
-_0x9586x27 = window['document']['createElement']('label');
-_0x9586x27['innerHTML'] = 'Mail';
-_0x9586x27['setAttribute']('style', 'padding-right: 10px;');
-_0x9586x28 = window['document']['createElement']('input');
-_0x9586x28['value'] = localStorage['getItem']('mail');
-_0x9586x28['setAttribute']('style', 'width: 250px;color: black;margin-right: 10px;');
-if (_0x9586x22['checked']) {
-    _0x9586x23['style']['display'] = 'block';
-    _0x9586x26['style']['display'] = 'block'
-} else {
-    _0x9586x23['style']['display'] = 'none';
-    _0x9586x26['style']['display'] = 'none'
-};
-_0x9586x23['appendChild'](selPay);
-_0x9586x23['appendChild'](_0x9586x24);
-_0x9586x23['appendChild'](_0x9586x25);
-_0x9586x26['appendChild'](_0x9586x27);
-_0x9586x26['appendChild'](_0x9586x28);
-divMain['appendChild'](_0x9586x23);
-divMain['appendChild'](_0x9586x26);
-_0x9586x22['addEventListener']('change', function() {
-    localStorage['setItem']('isAutoPay', _0x9586x22['checked']);
-    if (_0x9586x22['checked']) {
-        _0x9586x23['style']['display'] = 'block';
-        _0x9586x26['style']['display'] = 'block'
-    } else {
-        _0x9586x23['style']['display'] = 'none';
-        _0x9586x26['style']['display'] = 'none'
-    }
-});
-_0x9586x25['addEventListener']('change', function() {
-    localStorage['setItem']('minPay', _0x9586x25['value'])
-});
-_0x9586x28['addEventListener']('change', function() {
-    localStorage['setItem']('mail', _0x9586x28['value'])
-});
-selPay['addEventListener']('change', function() {
-    localStorage['setItem']('selPay', selPay['selectedIndex'])
-})
-}
-
-function AddControl() {
-    divMain = window['document']['createElement']('div');
-    divMain['id'] = 'divMain';
-    divMain['setAttribute']('style', 'color: #ffbe00;position: fixed;top: 0px;z-index: 999999999;font-weight: bold;background-color: black; padding: 10px;');
-    window['document']['querySelector']('body')['appendChild'](divMain);
-    AddTest();
-    AddLimit();
-    AddPay()
-}
-
-function IsLimitAndPayAndZoomAndAnswer() {
-    setTimeout(function() {
-        InitializeFirebase();
-        database = firebase['database']();
-        try {
-            videoId = document['getElementById']('video_player')['src']['slice'](30, 41);
-            database['ref']('/answer/' + videoId)['once']('value')['then'](function(_0x9586x2d) {
-                answer = _0x9586x2d['val']();
-                console['log'](answer)
-            })
-        } catch (e) {
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }, 6500)
-        };
-        try {
-            if (parseInt(localStorage['getItem']('videoLimit')) > 0 && parseInt(window['document']['querySelectorAll']('#header > div.pink_strip_homepage > span.top_strip_custom_message > span.top_strip_customer_message_css > span > span')[0]['innerText']['split']('-')[1]['split']('/')[0]) >= parseInt(localStorage['getItem']('videoLimit'))) {
-                setTimeout(function() {
-                    window['location']['href'] = 'about:blank'
-                }, 1000)
-            }
-        } catch (e) {};
-        try {
-            if (parseFloat(localStorage['getItem']('minPay')) <= parseFloat(document['getElementsByClassName']('button class-for-instant-baymack-videos header-button')[0]['innerText']['split'](' ')[0]) && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-                window['location']['href'] = 'https://www.skylom.com/prizes'
-            }
-        } catch (e) {}
-    }, 10000);
-    try {
-        document['getElementsByClassName']('watch-video')[0]['setAttribute']('style', 'width: 100px;height: auto;float: left;')
-    } catch (e) {
-        setTimeout(function() {
-            window['location']['href'] = 'https://www.skylom.com/videos'
-        }, 6500)
-    }
-}
-
-function Replay() {
-    setInterval(function() {
-        try {
-            tagReplay = document['getElementsByClassName']('video-ov-div')[0];
-            btnReplay = document['getElementById']('replay_video');
-            if (tagReplay['style']['display'] != 'none') {
-                btnReplay['click']()
-            }
-        } catch (e) {}
-    }, 20000)
-}
-
-function isNotPlay() {
-    setTimeout(function() {
-        try {
-            if (parseInt(document['getElementsByClassName']('video-page-current-duration')[0]['innerText']) < 1) {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }
-        } catch (e) {
-            window['location']['href'] = 'https://www.skylom.com/videos'
-        }
-    }, 20000)
-}
-
-function MainVideo() {
-    IsLimitAndPayAndZoomAndAnswer();
-    Replay();
-    isNotPlay();
-    pre_answering = document['getElementsByClassName']('pre-answering')[0];
-    category_questions = document['getElementsByClassName']('video-category video-category-questions-div')[0];
-    captchaDivs = document['getElementsByClassName']('captchaDivs')[0];
-    btnAnswer = [];
-    var _0x9586x31 = window['document']['querySelectorAll']('#body .video-category.video-category-questions-div ul.link-btn-list > li > a');
-    for (var _0x9586x32 = 0; _0x9586x32 < _0x9586x31['length']; _0x9586x32++) {
-        if (_0x9586x31[_0x9586x32]['className'] != 'border-btn') {
-            btnAnswer['push'](_0x9586x31[_0x9586x32])
-        }
-    };
-    msg = document['getElementsByClassName']('watch-vdo-msg')[0];
-    testAnswer = false;
-    checkEndVideo = setInterval(function() {
-        if (category_questions['style']['display'] == 'block' && pre_answering['style']['display'] != 'none' && captchaDivs['style']['display'] == 'none') {
-            for (var _0x9586x33 = 0; _0x9586x33 < btnAnswer['length']; _0x9586x33++) {
-                if (btnAnswer[_0x9586x33]['innerHTML']['trim']() == answer) {
-                    btnAnswer[_0x9586x33]['click']();
-                    testAnswer = true;
-                    break
-                }
-            };
-            if (!testAnswer) {
-                testAnswer = false;
-                f = Math['floor'](Math['random']() * 4);
-                answer = btnAnswer[f]['innerHTML'];
-                btnAnswer[f]['click']()
-            }
-        };
-        if (msg['innerHTML']['toLowerCase']()['includes']('correct') || msg['innerHTML']['toLowerCase']()['includes']('complete') || msg['innerHTML']['toLowerCase']()['includes']('congrats')) {
-            clearInterval(checkEndVideo);
-            localStorage['setItem']('videoTotal', parseInt(localStorage['getItem']('videoTotal')) + 1);
-            if (!testAnswer) {
-                database['ref']('/answer/' + videoId)['set'](answer)
-            };
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }, 1000)
-        } else {
-            if (msg['innerHTML']['toLowerCase']()['includes']('wrong')) {
-                clearInterval(checkEndVideo);
-                localStorage['setItem']('videoF', parseInt(localStorage['getItem']('videoF')) + 1);
-                if (testAnswer) {
-                    database['ref']('/answer/' + videoId)['remove']()
-                };
-                setTimeout(function() {
-                    window['location']['href'] = 'https://www.skylom.com/videos'
-                }, 500)
-            }
-        }
-    }, 3000)
-}
-
-function MainPay() {
-    setTimeout(function() {
-        window['location']['href'] = 'https://www.skylom.com/videos'
-    }, 30000);
-    try {
-        if (parseFloat(localStorage['getItem']('minPay')) <= parseFloat(document['getElementsByClassName']('blnc')[0]['innerText']['split'](' ')[2]) && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-            setTimeout(function() {
-                document['getElementsByClassName']('themeBtn small redeemButton')[selPay['selectedIndex']]['click']();
-                setTimeout(function() {
-                    document['getElementById']('userEmail')['value'] = localStorage['getItem']('mail');
-                    setTimeout(function() {
-                        document['getElementById']('subGiftCard')['click']();
-                        setTimeout(function() {
-                            window['location']['href'] = 'https://www.skylom.com/videos'
-                        }, 2000)
-                    }, 2000)
-                }, 1000)
-            }, 5000)
-        } else {
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }, 2000)
-        }
-    } catch (e) {
-        setTimeout(function() {
-            window['location']['href'] = 'https://www.skylom.com/videos'
-        }, 2000)
-    }
-}(function() {
-    setInterval(function() {
-        window['alert'] = function() {}
-    }, 60000);
-    setTimeout(function() {
-        window['location']['href'] = 'https://www.skylom.com/videos'
-    }, 360000);
-    AddControl();
-    if (window['location']['href'] == 'https://www.skylom.com/videos') {
-        MainVideo()
-    } else {
-        if (window['location']['href'] == 'https://www.skylom.com/prizes' && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-            MainPay()
-        } else {
-            if (window['location']['href'] == 'https://www.skylom.com/?login=true&redirect_url=videos') {
-                setTimeout(function() {
-                    document['getElementsByClassName']('login-with-facebook-button login-popup-login-url')[0]['click']()
-                }, 5000)
-            } else {
-                if (window['location']['href']['includes']('accounts.google.com')) {
-                    setTimeout(function() {
-                        document['getElementsByClassName']('lCoei YZVTmd SmR8')[0]['click']()
-                    }, 5000)
-                } else {
-                    setTimeout(function() {
-                        window['location']['href'] = 'https://www.skylom.com/videos'
-                    }, 6500)
-                }
-            }
-        }
-    }
-})();
-selPay['add'](_0x9586x29);
-selPay['add'](_0x9586x2a);
-selPay['selectedIndex'] = localStorage['getItem']('selPay');
-_0x9586x24 = window['document']['createElement']('label');
-_0x9586x24['innerHTML'] = 'Min Pay';
-_0x9586x24['setAttribute']('style', 'padding-right: 10px;');
-_0x9586x25 = window['document']['createElement']('input');
-_0x9586x25['value'] = localStorage['getItem']('minPay');
-_0x9586x25['setAttribute']('style', 'width: 50px;color: black;margin-right: 10px;');
-_0x9586x26 = window['document']['createElement']('div');
-_0x9586x27 = window['document']['createElement']('label');
-_0x9586x27['innerHTML'] = 'Mail';
-_0x9586x27['setAttribute']('style', 'padding-right: 10px;');
-_0x9586x28 = window['document']['createElement']('input');
-_0x9586x28['value'] = localStorage['getItem']('mail');
-_0x9586x28['setAttribute']('style', 'width: 250px;color: black;margin-right: 10px;');
-if (_0x9586x22['checked']) {
-    _0x9586x23['style']['display'] = 'block';
-    _0x9586x26['style']['display'] = 'block'
-} else {
-    _0x9586x23['style']['display'] = 'none';
-    _0x9586x26['style']['display'] = 'none'
-};
-_0x9586x23['appendChild'](selPay);
-_0x9586x23['appendChild'](_0x9586x24);
-_0x9586x23['appendChild'](_0x9586x25);
-_0x9586x26['appendChild'](_0x9586x27);
-_0x9586x26['appendChild'](_0x9586x28);
-divMain['appendChild'](_0x9586x23);
-divMain['appendChild'](_0x9586x26);
-_0x9586x22['addEventListener']('change', function() {
-    localStorage['setItem']('isAutoPay', _0x9586x22['checked']);
-    if (_0x9586x22['checked']) {
-        _0x9586x23['style']['display'] = 'block';
-        _0x9586x26['style']['display'] = 'block'
-    } else {
-        _0x9586x23['style']['display'] = 'none';
-        _0x9586x26['style']['display'] = 'none'
-    }
-});
-_0x9586x25['addEventListener']('change', function() {
-    localStorage['setItem']('minPay', _0x9586x25['value'])
-});
-_0x9586x28['addEventListener']('change', function() {
-    localStorage['setItem']('mail', _0x9586x28['value'])
-});
-selPay['addEventListener']('change', function() {
-    localStorage['setItem']('selPay', selPay['selectedIndex'])
-})
-}
-
-function AddControl() {
-    divMain = window['document']['createElement']('div');
-    divMain['id'] = 'divMain';
-    divMain['setAttribute']('style', 'color: #ffbe00;position: fixed;top: 0px;z-index: 999999999;font-weight: bold;background-color: black; padding: 10px;');
-    window['document']['querySelector']('body')['appendChild'](divMain);
-    AddTest();
-    AddLimit();
-    AddPay()
-}
-
-function IsLimitAndPayAndZoomAndAnswer() {
-    setTimeout(function() {
-        InitializeFirebase();
-        database = firebase['database']();
-        try {
-            videoId = document['getElementById']('video_player')['src']['slice'](30, 41);
-            database['ref']('/answer/' + videoId)['once']('value')['then'](function(_0x9586x2d) {
-                answer = _0x9586x2d['val']();
-                console['log'](answer)
-            })
-        } catch (e) {
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }, 6500)
-        };
-        try {
-            if (parseInt(localStorage['getItem']('videoLimit')) > 0 && parseInt(window['document']['querySelectorAll']('#header > div.pink_strip_homepage > span.top_strip_custom_message > span.top_strip_customer_message_css > span > span')[0]['innerText']['split']('-')[1]['split']('/')[0]) >= parseInt(localStorage['getItem']('videoLimit'))) {
-                setTimeout(function() {
-                    window['location']['href'] = 'about:blank'
-                }, 1000)
-            }
-        } catch (e) {};
-        try {
-            if (parseFloat(localStorage['getItem']('minPay')) <= parseFloat(document['getElementsByClassName']('button class-for-instant-baymack-videos header-button')[0]['innerText']['split'](' ')[0]) && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-                window['location']['href'] = 'https://www.skylom.com/prizes'
-            }
-        } catch (e) {}
-    }, 10000);
-    try {
-        document['getElementsByClassName']('watch-video')[0]['setAttribute']('style', 'width: 100px;height: auto;float: left;')
-    } catch (e) {
-        setTimeout(function() {
-            window['location']['href'] = 'https://www.skylom.com/videos'
-        }, 6500)
-    }
-}
-
-function Replay() {
-    setInterval(function() {
-        try {
-            tagReplay = document['getElementsByClassName']('video-ov-div')[0];
-            btnReplay = document['getElementById']('replay_video');
-            if (tagReplay['style']['display'] != 'none') {
-                btnReplay['click']()
-            }
-        } catch (e) {}
-    }, 20000)
-}
-
-function isNotPlay() {
-    setTimeout(function() {
-        try {
-            if (parseInt(document['getElementsByClassName']('video-page-current-duration')[0]['innerText']) < 1) {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }
-        } catch (e) {
-            window['location']['href'] = 'https://www.skylom.com/videos'
-        }
-    }, 20000)
-}
-
-function MainVideo() {
-    IsLimitAndPayAndZoomAndAnswer();
-    Replay();
-    isNotPlay();
-    pre_answering = document['getElementsByClassName']('pre-answering')[0];
-    category_questions = document['getElementsByClassName']('video-category video-category-questions-div')[0];
-    captchaDivs = document['getElementsByClassName']('captchaDivs')[0];
-    btnAnswer = [];
-    var _0x9586x31 = window['document']['querySelectorAll']('#body .video-category.video-category-questions-div ul.link-btn-list > li > a');
-    for (var _0x9586x32 = 0; _0x9586x32 < _0x9586x31['length']; _0x9586x32++) {
-        if (_0x9586x31[_0x9586x32]['className'] != 'border-btn') {
-            btnAnswer['push'](_0x9586x31[_0x9586x32])
-        }
-    };
-    msg = document['getElementsByClassName']('watch-vdo-msg')[0];
-    testAnswer = false;
-    checkEndVideo = setInterval(function() {
-        if (category_questions['style']['display'] == 'block' && pre_answering['style']['display'] != 'none' && captchaDivs['style']['display'] == 'none') {
-            for (var _0x9586x33 = 0; _0x9586x33 < btnAnswer['length']; _0x9586x33++) {
-                if (btnAnswer[_0x9586x33]['innerHTML']['trim']() == answer) {
-                    btnAnswer[_0x9586x33]['click']();
-                    testAnswer = true;
-                    break
-                }
-            };
-            if (!testAnswer) {
-                testAnswer = false;
-                f = Math['floor'](Math['random']() * 4);
-                answer = btnAnswer[f]['innerHTML'];
-                btnAnswer[f]['click']()
-            }
-        };
-        if (msg['innerHTML']['toLowerCase']()['includes']('correct') || msg['innerHTML']['toLowerCase']()['includes']('complete') || msg['innerHTML']['toLowerCase']()['includes']('congrats')) {
-            clearInterval(checkEndVideo);
-            localStorage['setItem']('videoTotal', parseInt(localStorage['getItem']('videoTotal')) + 1);
-            if (!testAnswer) {
-                database['ref']('/answer/' + videoId)['set'](answer)
-            };
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }, 1000)
-        } else {
-            if (msg['innerHTML']['toLowerCase']()['includes']('wrong')) {
-                clearInterval(checkEndVideo);
-                localStorage['setItem']('videoF', parseInt(localStorage['getItem']('videoF')) + 1);
-                if (testAnswer) {
-                    database['ref']('/answer/' + videoId)['remove']()
-                };
-                setTimeout(function() {
-                    window['location']['href'] = 'https://www.skylom.com/videos'
-                }, 500)
-            }
-        }
-    }, 3000)
-}
-
-function MainPay() {
-    setTimeout(function() {
-        window['location']['href'] = 'https://www.skylom.com/videos'
-    }, 30000);
-    try {
-        if (parseFloat(localStorage['getItem']('minPay')) <= parseFloat(document['getElementsByClassName']('blnc')[0]['innerText']['split'](' ')[2]) && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-            setTimeout(function() {
-                document['getElementsByClassName']('themeBtn small redeemButton')[selPay['selectedIndex']]['click']();
-                setTimeout(function() {
-                    document['getElementById']('userEmail')['value'] = localStorage['getItem']('mail');
-                    setTimeout(function() {
-                        document['getElementById']('subGiftCard')['click']();
-                        setTimeout(function() {
-                            window['location']['href'] = 'https://www.skylom.com/videos'
-                        }, 2000)
-                    }, 2000)
-                }, 1000)
-            }, 5000)
-        } else {
-            setTimeout(function() {
-                window['location']['href'] = 'https://www.skylom.com/videos'
-            }, 2000)
-        }
-    } catch (e) {
-        setTimeout(function() {
-            window['location']['href'] = 'https://www.skylom.com/videos'
-        }, 2000)
-    }
-}(function() {
-    setInterval(function() {
-        window['alert'] = function() {}
-    }, 60000);
-    setTimeout(function() {
-        window['location']['href'] = 'https://www.skylom.com/videos'
-    }, 360000);
-    AddControl();
-    if (window['location']['href'] == 'https://www.skylom.com/videos') {
-        MainVideo()
-    } else {
-        if (window['location']['href'] == 'https://www.skylom.com/prizes' && JSON['parse'](localStorage['getItem']('isAutoPay'))) {
-            MainPay()
-        } else {
-            if (window['location']['href'] == 'https://www.skylom.com/?login=true&redirect_url=videos') {
-                setTimeout(function() {
-                    document['getElementsByClassName']('login-with-facebook-button login-popup-login-url')[0]['click']()
-                }, 5000)
-            } else {
-                if (window['location']['href']['includes']('accounts.google.com')) {
-                    setTimeout(function() {
-                        document['getElementsByClassName']('lCoei YZVTmd SmR8')[0]['click']()
-                    }, 5000)
-                } else {
-                    setTimeout(function() {
-                        window['location']['href'] = 'https://www.skylom.com/videos'
-                    }, 6500)
-                }
-            }
-        }
-    }
-})();
-_0x9586x2a = document['createElement']('option');
-_0x9586x2a['text'] = '1;selPay['
-add '](_0x9586x29);selPay['
-add '](_0x9586x2a);selPay['
-selectedIndex ']= localStorage['
-getItem ']('
-selPay ');_0x9586x24= window['
-document ']['
-createElement ']('
-label ');_0x9586x24['
-innerHTML ']= '
-Min Pay ';_0x9586x24['
-setAttribute ']('
-style ','
-padding - right: 10 px;
-');_0x9586x25= window['
-document ']['
-createElement ']('
-input ');_0x9586x25['
-value ']= localStorage['
-getItem ']('
-minPay ');_0x9586x25['
-setAttribute ']('
-style ','
-width: 50 px;
-color: black;
-margin - right: 10 px;
-');_0x9586x26= window['
-document ']['
-createElement ']('
-div ');_0x9586x27= window['
-document ']['
-createElement ']('
-label ');_0x9586x27['
-innerHTML ']= '
-Mail ';_0x9586x27['
-setAttribute ']('
-style ','
-padding - right: 10 px;
-');_0x9586x28= window['
-document ']['
-createElement ']('
-input ');_0x9586x28['
-value ']= localStorage['
-getItem ']('
-mail ');_0x9586x28['
-setAttribute ']('
-style ','
-width: 250 px;
-color: black;
-margin - right: 10 px;
-');if(_0x9586x22['
-checked ']){_0x9586x23['
-style ']['
-display ']= '
-block ';_0x9586x26['
-style ']['
-display ']= '
-block '}else {_0x9586x23['
-style ']['
-display ']= '
-none ';_0x9586x26['
-style ']['
-display ']= '
-none '};_0x9586x23['
-appendChild '](selPay);_0x9586x23['
-appendChild '](_0x9586x24);_0x9586x23['
-appendChild '](_0x9586x25);_0x9586x26['
-appendChild '](_0x9586x27);_0x9586x26['
-appendChild '](_0x9586x28);divMain['
-appendChild '](_0x9586x23);divMain['
-appendChild '](_0x9586x26);_0x9586x22['
-addEventListener ']('
-change ',function(){localStorage['
-setItem ']('
-isAutoPay ',_0x9586x22['
-checked ']);if(_0x9586x22['
-checked ']){_0x9586x23['
-style ']['
-display ']= '
-block ';_0x9586x26['
-style ']['
-display ']= '
-block '}else {_0x9586x23['
-style ']['
-display ']= '
-none ';_0x9586x26['
-style ']['
-display ']= '
-none '}});_0x9586x25['
-addEventListener ']('
-change ',function(){localStorage['
-setItem ']('
-minPay ',_0x9586x25['
-value '])});_0x9586x28['
-addEventListener ']('
-change ',function(){localStorage['
-setItem ']('
-mail ',_0x9586x28['
-value '])});selPay['
-addEventListener ']('
-change ',function(){localStorage['
-setItem ']('
-selPay ',selPay['
-selectedIndex '])})}function AddControl(){divMain= window['
-document ']['
-createElement ']('
-div ');divMain['
-id ']= '
-divMain ';divMain['
-setAttribute ']('
-style ','
-color: #ffbe00;
-position: fixed;
-top: 0 px;
-z - index: 999999999;
-font - weight: bold;
-background - color: black;
-padding: 10 px;
-');window['
-document ']['
-querySelector ']('
-body ')['
-appendChild '](divMain);AddTest();AddLimit();AddPay()}function IsLimitAndPayAndZoomAndAnswer(){setTimeout(function(){InitializeFirebase();database= firebase['
-database ']();try{videoId= document['
-getElementById ']('
-video_player ')['
-src ']['
-slice '](30,41);database['
-ref '](' / answer / '+ videoId)['
-once ']('
-value ')['
-then '](function(_0x9586x2d){answer= _0x9586x2d['
-val ']();console['
-log '](answer)})}catch(e){setTimeout(function(){window['
-location ']['
-href ']= '
-https: //www.skylom.com/videos'},6500)};try{if(parseInt(localStorage['getItem']('videoLimit'))> 0&& parseInt(window['document']['querySelectorAll']('#header > div.pink_strip_homepage > span.top_strip_custom_message > span.top_strip_customer_message_css > span > span')[0]['innerText']['split']('-')[1]['split']('/')[0])>= parseInt(localStorage['getItem']('videoLimit'))){setTimeout(function(){window['location']['href']= 'about:blank'},1000)}}catch(e){};try{if(parseFloat(localStorage['getItem']('minPay'))<= parseFloat(document['getElementsByClassName']('button class-for-instant-baymack-videos header-button')[0]['innerText']['split'](' ')[0])&& JSON['parse'](localStorage['getItem']('isAutoPay'))){window['location']['href']= 'https://www.skylom.com/prizes'}}catch(e){}},10000);try{document['getElementsByClassName']('watch-video')[0]['setAttribute']('style','width: 100px;height: auto;float: left;')}catch(e){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},6500)}}function Replay(){setInterval(function(){try{tagReplay= document['getElementsByClassName']('video-ov-div')[0];btnReplay= document['getElementById']('replay_video');if(tagReplay['style']['display']!= 'none'){btnReplay['click']()}}catch(e){}},20000)}function isNotPlay(){setTimeout(function(){try{if(parseInt(document['getElementsByClassName']('video-page-current-duration')[0]['innerText'])< 1){window['location']['href']= 'https://www.skylom.com/videos'}}catch(e){window['location']['href']= 'https://www.skylom.com/videos'}},20000)}function MainVideo(){IsLimitAndPayAndZoomAndAnswer();Replay();isNotPlay();pre_answering= document['getElementsByClassName']('pre-answering')[0];category_questions= document['getElementsByClassName']('video-category video-category-questions-div')[0];captchaDivs= document['getElementsByClassName']('captchaDivs')[0];btnAnswer= [];var _0x9586x31=window['document']['querySelectorAll']('#body .video-category.video-category-questions-div ul.link-btn-list > li > a');for(var _0x9586x32=0;_0x9586x32< _0x9586x31['length'];_0x9586x32++){if(_0x9586x31[_0x9586x32]['className']!= 'border-btn'){btnAnswer['push'](_0x9586x31[_0x9586x32])}};msg= document['getElementsByClassName']('watch-vdo-msg')[0];testAnswer= false;checkEndVideo= setInterval(function(){if(category_questions['style']['display']== 'block'&& pre_answering['style']['display']!= 'none'&& captchaDivs['style']['display']== 'none'){for(var _0x9586x33=0;_0x9586x33< btnAnswer['length'];_0x9586x33++){if(btnAnswer[_0x9586x33]['innerHTML']['trim']()== answer){btnAnswer[_0x9586x33]['click']();testAnswer= true;break}};if(!testAnswer){testAnswer= false;f= Math['floor'](Math['random']()* 4);answer= btnAnswer[f]['innerHTML'];btnAnswer[f]['click']()}};if(msg['innerHTML']['toLowerCase']()['includes']('correct')|| msg['innerHTML']['toLowerCase']()['includes']('complete')|| msg['innerHTML']['toLowerCase']()['includes']('congrats')){clearInterval(checkEndVideo);localStorage['setItem']('videoTotal',parseInt(localStorage['getItem']('videoTotal'))+ 1);if(!testAnswer){database['ref']('/answer/'+ videoId)['set'](answer)};setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},1000)}else {if(msg['innerHTML']['toLowerCase']()['includes']('wrong')){clearInterval(checkEndVideo);localStorage['setItem']('videoF',parseInt(localStorage['getItem']('videoF'))+ 1);if(testAnswer){database['ref']('/answer/'+ videoId)['remove']()};setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},500)}}},3000)}function MainPay(){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},30000);try{if(parseFloat(localStorage['getItem']('minPay'))<= parseFloat(document['getElementsByClassName']('blnc')[0]['innerText']['split'](' ')[2])&& JSON['parse'](localStorage['getItem']('isAutoPay'))){setTimeout(function(){document['getElementsByClassName']('themeBtn small redeemButton')[selPay['selectedIndex']]['click']();setTimeout(function(){document['getElementById']('userEmail')['value']= localStorage['getItem']('mail');setTimeout(function(){document['getElementById']('subGiftCard')['click']();setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},2000)},2000)},1000)},5000)}else {setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},2000)}}catch(e){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},2000)}}(function(){setInterval(function(){window['alert']= function(){}},60000);setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},360000);AddControl();if(window['location']['href']== 'https://www.skylom.com/videos'){MainVideo()}else {if(window['location']['href']== 'https://www.skylom.com/prizes'&& JSON['parse'](localStorage['getItem']('isAutoPay'))){MainPay()}else {if(window['location']['href']== 'https://www.skylom.com/?login=true&redirect_url=videos'){setTimeout(function(){document['getElementsByClassName']('login-with-facebook-button login-popup-login-url')[0]['click']()},5000)}else {if(window['location']['href']['includes']('accounts.google.com')){setTimeout(function(){document['getElementsByClassName']('lCoei YZVTmd SmR8')[0]['click']()},5000)}else {setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},6500)}}}}})();selPay['add'](_0x9586x29);selPay['add'](_0x9586x2a);selPay['selectedIndex']= localStorage['getItem']('selPay');_0x9586x24= window['document']['createElement']('label');_0x9586x24['innerHTML']= 'Min Pay';_0x9586x24['setAttribute']('style','padding-right: 10px;');_0x9586x25= window['document']['createElement']('input');_0x9586x25['value']= localStorage['getItem']('minPay');_0x9586x25['setAttribute']('style','width: 50px;color: black;margin-right: 10px;');_0x9586x26= window['document']['createElement']('div');_0x9586x27= window['document']['createElement']('label');_0x9586x27['innerHTML']= 'Mail';_0x9586x27['setAttribute']('style','padding-right: 10px;');_0x9586x28= window['document']['createElement']('input');_0x9586x28['value']= localStorage['getItem']('mail');_0x9586x28['setAttribute']('style','width: 250px;color: black;margin-right: 10px;');if(_0x9586x22['checked']){_0x9586x23['style']['display']= 'block';_0x9586x26['style']['display']= 'block'}else {_0x9586x23['style']['display']= 'none';_0x9586x26['style']['display']= 'none'};_0x9586x23['appendChild'](selPay);_0x9586x23['appendChild'](_0x9586x24);_0x9586x23['appendChild'](_0x9586x25);_0x9586x26['appendChild'](_0x9586x27);_0x9586x26['appendChild'](_0x9586x28);divMain['appendChild'](_0x9586x23);divMain['appendChild'](_0x9586x26);_0x9586x22['addEventListener']('change',function(){localStorage['setItem']('isAutoPay',_0x9586x22['checked']);if(_0x9586x22['checked']){_0x9586x23['style']['display']= 'block';_0x9586x26['style']['display']= 'block'}else {_0x9586x23['style']['display']= 'none';_0x9586x26['style']['display']= 'none'}});_0x9586x25['addEventListener']('change',function(){localStorage['setItem']('minPay',_0x9586x25['value'])});_0x9586x28['addEventListener']('change',function(){localStorage['setItem']('mail',_0x9586x28['value'])});selPay['addEventListener']('change',function(){localStorage['setItem']('selPay',selPay['selectedIndex'])})}function AddControl(){divMain= window['document']['createElement']('div');divMain['id']= 'divMain';divMain['setAttribute']('style','color: #ffbe00;position: fixed;top: 0px;z-index: 999999999;font-weight: bold;background-color: black; padding: 10px;');window['document']['querySelector']('body')['appendChild'](divMain);AddTest();AddLimit();AddPay()}function IsLimitAndPayAndZoomAndAnswer(){setTimeout(function(){InitializeFirebase();database= firebase['database']();try{videoId= document['getElementById']('video_player')['src']['slice'](30,41);database['ref']('/answer/'+ videoId)['once']('value')['then'](function(_0x9586x2d){answer= _0x9586x2d['val']();console['log'](answer)})}catch(e){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},6500)};try{if(parseInt(localStorage['getItem']('videoLimit'))> 0&& parseInt(window['document']['querySelectorAll']('#header > div.pink_strip_homepage > span.top_strip_custom_message > span.top_strip_customer_message_css > span > span')[0]['innerText']['split']('-')[1]['split']('/')[0])>= parseInt(localStorage['getItem']('videoLimit'))){setTimeout(function(){window['location']['href']= 'about:blank'},1000)}}catch(e){};try{if(parseFloat(localStorage['getItem']('minPay'))<= parseFloat(document['getElementsByClassName']('button class-for-instant-baymack-videos header-button')[0]['innerText']['split'](' ')[0])&& JSON['parse'](localStorage['getItem']('isAutoPay'))){window['location']['href']= 'https://www.skylom.com/prizes'}}catch(e){}},10000);try{document['getElementsByClassName']('watch-video')[0]['setAttribute']('style','width: 100px;height: auto;float: left;')}catch(e){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},6500)}}function Replay(){setInterval(function(){try{tagReplay= document['getElementsByClassName']('video-ov-div')[0];btnReplay= document['getElementById']('replay_video');if(tagReplay['style']['display']!= 'none'){btnReplay['click']()}}catch(e){}},20000)}function isNotPlay(){setTimeout(function(){try{if(parseInt(document['getElementsByClassName']('video-page-current-duration')[0]['innerText'])< 1){window['location']['href']= 'https://www.skylom.com/videos'}}catch(e){window['location']['href']= 'https://www.skylom.com/videos'}},20000)}function MainVideo(){IsLimitAndPayAndZoomAndAnswer();Replay();isNotPlay();pre_answering= document['getElementsByClassName']('pre-answering')[0];category_questions= document['getElementsByClassName']('video-category video-category-questions-div')[0];captchaDivs= document['getElementsByClassName']('captchaDivs')[0];btnAnswer= [];var _0x9586x31=window['document']['querySelectorAll']('#body .video-category.video-category-questions-div ul.link-btn-list > li > a');for(var _0x9586x32=0;_0x9586x32< _0x9586x31['length'];_0x9586x32++){if(_0x9586x31[_0x9586x32]['className']!= 'border-btn'){btnAnswer['push'](_0x9586x31[_0x9586x32])}};msg= document['getElementsByClassName']('watch-vdo-msg')[0];testAnswer= false;checkEndVideo= setInterval(function(){if(category_questions['style']['display']== 'block'&& pre_answering['style']['display']!= 'none'&& captchaDivs['style']['display']== 'none'){for(var _0x9586x33=0;_0x9586x33< btnAnswer['length'];_0x9586x33++){if(btnAnswer[_0x9586x33]['innerHTML']['trim']()== answer){btnAnswer[_0x9586x33]['click']();testAnswer= true;break}};if(!testAnswer){testAnswer= false;f= Math['floor'](Math['random']()* 4);answer= btnAnswer[f]['innerHTML'];btnAnswer[f]['click']()}};if(msg['innerHTML']['toLowerCase']()['includes']('correct')|| msg['innerHTML']['toLowerCase']()['includes']('complete')|| msg['innerHTML']['toLowerCase']()['includes']('congrats')){clearInterval(checkEndVideo);localStorage['setItem']('videoTotal',parseInt(localStorage['getItem']('videoTotal'))+ 1);if(!testAnswer){database['ref']('/answer/'+ videoId)['set'](answer)};setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},1000)}else {if(msg['innerHTML']['toLowerCase']()['includes']('wrong')){clearInterval(checkEndVideo);localStorage['setItem']('videoF',parseInt(localStorage['getItem']('videoF'))+ 1);if(testAnswer){database['ref']('/answer/'+ videoId)['remove']()};setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},500)}}},3000)}function MainPay(){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},30000);try{if(parseFloat(localStorage['getItem']('minPay'))<= parseFloat(document['getElementsByClassName']('blnc')[0]['innerText']['split'](' ')[2])&& JSON['parse'](localStorage['getItem']('isAutoPay'))){setTimeout(function(){document['getElementsByClassName']('themeBtn small redeemButton')[selPay['selectedIndex']]['click']();setTimeout(function(){document['getElementById']('userEmail')['value']= localStorage['getItem']('mail');setTimeout(function(){document['getElementById']('subGiftCard')['click']();setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},2000)},2000)},1000)},5000)}else {setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},2000)}}catch(e){setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},2000)}}(function(){setInterval(function(){window['alert']= function(){}},60000);setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},360000);AddControl();if(window['location']['href']== 'https://www.skylom.com/videos'){MainVideo()}else {if(window['location']['href']== 'https://www.skylom.com/prizes'&& JSON['parse'](localStorage['getItem']('isAutoPay'))){MainPay()}else {if(window['location']['href']== 'https://www.skylom.com/?login=true&redirect_url=videos'){setTimeout(function(){document['getElementsByClassName']('login-with-facebook-button login-popup-login-url')[0]['click']()},5000)}else {if(window['location']['href']['includes']('accounts.google.com')){setTimeout(function(){document['getElementsByClassName']('lCoei YZVTmd SmR8')[0]['click']()},5000)}else {setTimeout(function(){window['location']['href']= 'https://www.skylom.com/videos'},6500)}}}}})()
+})()
