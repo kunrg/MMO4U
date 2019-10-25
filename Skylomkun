@@ -217,9 +217,7 @@ function MainVideo() {
     msg = document.getElementsByClassName("watch-vdo-msg")[0];
     testAnswer = false;
     checkEndVideo = setInterval(function () {
-        if (category_questions.style.display == "" &&
-                    pre_answering.style.display != "none" &&
-                    captchaDivs.style.display == "none") {
+        if (typeof category_questions !== "undefined") {
             for (var _0x9586x33 = 0; _0x9586x33 < btnAnswer.length; _0x9586x33++) {
                 if (btnAnswer[_0x9586x33].innerHTML.trim() == answer) {
                     btnAnswer[_0x9586x33].click();
