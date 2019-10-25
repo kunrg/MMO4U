@@ -232,27 +232,29 @@ function MainVideo() {
                 btnAnswer[f].click()
             }
         };
-        if (msg.innerHTML.toLowerCase().includes("correct") || msg.innerHTML.toLowerCase().includes("complete") || msg.innerHTML.toLowerCase().includes("congrats")) {
-            clearInterval(checkEndVideo);
-            localStorage.setItem("videoTotal", parseInt(localStorage.getItem("videoTotal")) + 1);
-            if (!testAnswer) {
-                database.ref("/answer/" + videoId).set(answer)
-            };
-            setTimeout(function () {
-                window.location.href = "https://www.skylom.com/videos"
-            }, 1000)
-        } else {
-            if (msg.innerHTML.toLowerCase().includes("wrong")) {
+         try {
+            if (msg.innerHTML.toLowerCase().includes("correct") || msg.innerHTML.toLowerCase().includes("complete") || msg.innerHTML.toLowerCase().includes("congrats")) {
                 clearInterval(checkEndVideo);
-                localStorage.setItem("videoF", parseInt(localStorage.getItem("videoF")) + 1);
-                if (testAnswer) {
-                    database.ref("/answer/" + videoId).remove()
+                localStorage.setItem("videoTotal", parseInt(localStorage.getItem("videoTotal")) + 1);
+                if (!testAnswer) {
+                    database.ref("/answer/" + videoId).set(answer)
                 };
                 setTimeout(function () {
                     window.location.href = "https://www.skylom.com/videos"
-                }, 500)
+                }, 1000)
+            } else {
+                if (msg.innerHTML.toLowerCase().includes("wrong")) {
+                    clearInterval(checkEndVideo);
+                    localStorage.setItem("videoF", parseInt(localStorage.getItem("videoF")) + 1);
+                    if (testAnswer) {
+                        database.ref("/answer/" + videoId).remove()
+                    };
+                    setTimeout(function () {
+                        window.location.href = "https://www.skylom.com/videos"
+                    }, 500)
+                }
             }
-        }
+          } catch (e) {};
     }, 3000)
 }
 
