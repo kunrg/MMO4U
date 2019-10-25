@@ -254,7 +254,9 @@ function MainVideo() {
                     }, 500)
                 }
             }
-          } catch (e) {};
+          } catch (e) {
+            console.log(e);
+          };
     }, 3000)
 }
 
