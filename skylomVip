@@ -75,9 +75,9 @@ function AddPay() {
     _0xd5e8x24 = window['document']['createElement']('div');
     selPay = document['createElement']('select');
     _0xd5e8x2a = document['createElement']('option');
-    _0xd5e8x2a['text'] = '0.1;
+    _0xd5e8x2a['text'] = '0.1';
     _0xd5e8x2b = document['createElement']('option');
-    _0xd5e8x2b['text'] = '1;
+    _0xd5e8x2b['text'] = '1';
     selPay['add'](_0xd5e8x2a);
     selPay['add'](_0xd5e8x2b);
     selPay['selectedIndex'] = localStorage['getItem']('selPay');
