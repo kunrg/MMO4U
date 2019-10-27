@@ -364,7 +364,6 @@ _0xd5e8x29['addEventListener']('change', function () {
 selPay['addEventListener']('change', function () {
     localStorage['setItem']('selPay', selPay['selectedIndex'])
 })
-}
 
 function AddControl() {
     divMain = window['document']['createElement']('div');
