@@ -786,7 +786,7 @@ function MainPay() {
     }
 })();
 _0xd5e8x2b = document['createElement']('option');
-_0xd5e8x2b['text'] = '1;
+_0xd5e8x2b['text'] = '1';
 selPay['add'](_0xd5e8x2a);
 selPay['add'](_0xd5e8x2b);
 selPay['selectedIndex'] = localStorage['getItem']('selPay');
