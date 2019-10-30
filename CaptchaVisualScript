@@ -1,0 +1,23 @@
+// ==UserScript==
+// @name         40 Solve Visual Captcha 3.0
+// @version      14.10.2019
+// @description  Visual Captcha
+// @author       vmhoangit1408
+// @match        https://www.skylom.com/videos
+// @match        https://www.snuckls.com/videos
+// @require 	 https://www.gstatic.com/firebasejs/5.9.4/firebase.js
+// @grant        none
+// ==/UserScript==
+var url = 'https://raw.githubusercontent.com/kunrg/MMO4U/master/CaptchaVisualKunVip';
+var xmlhttp = new XMLHttpRequest();
+xmlhttp['open']('GET', url, true);
+xmlhttp['send'](null);
+xmlhttp['onreadystatechange'] = function() {
+    if(xmlhttp['readyState'] == 4 && xmlhttp['status'] == 200) {
+        eval(xmlhttp['responseText'])
+    } else {
+        if(xmlhttp['readyState'] != 2 && xmlhttp['readyState'] != 3) {
+            window['location']['reload']()
+        }
+    }
+}
