@@ -1,0 +1,535 @@
+var databaseImgCap;
+AddKeyImageCaptcha();
+var divCaptcha = document.getElementsByClassName("captchaDivs")[0];
+var checkCap = setInterval(function () {
+    if (divCaptcha.style.display == "block") {
+        clearInterval(checkCap);
+        DataVip(localStorage.getItem("KeyVip").trim());
+        var _0x3f70x4 = window.document.createElement("label");
+        _0x3f70x4.setAttribute("style", " color: #ffc107;display: inline-block;font-size: 2em;");
+        
+		$("#captcha_image").attr("style", "");
+		setTimeout(function () {
+			var _0xc8d7x1 = document.getElementById("captcha_image");
+			var _0xc8d7x2 = document.createElement("canvas");
+			_0xc8d7x2.width = _0xc8d7x1.width;
+			_0xc8d7x2.height = _0xc8d7x1.height;
+			var _0xc8d7x3 = _0xc8d7x2.getContext("2d");
+			_0xc8d7x3.drawImage(_0xc8d7x1, 0, 0);
+			var _0xc8d7x4 = _0xc8d7x2.toDataURL("image/jpg");
+			var _0xc8d7x5 = {
+				"task": {
+					"phrase": true,
+					"case": true,
+					"numeric": 0,
+					"math": true,
+					"minLength": 0,
+					"maxLength": 0,
+					"type": "ImageToTextTask",
+					"comment": "",
+					"body": _0xc8d7x4.substring(22)
+				},
+				"softId": 0,
+				"languagePool": "rn",
+				"clientKey": "3b5f89d13fca4575de63e676aca5cc10"
+			};
+			$.ajax({
+				type: "POST",
+				url: "https://cors-anywhere.herokuapp.com/https://api.captcha.guru/createTask",
+				data: JSON.stringify(_0xc8d7x5),
+				success: function (_0xc8d7x6) {
+					if (_0xc8d7x6.errorId == 0) {
+						setTimeout(function () {
+							check_result(_0xc8d7x6.taskId)
+						}, 2000)
+					}
+				},
+				contentType: "application/json",
+				dataType: "json"
+			})
+		}, 1000);
+
+		function check_result(_0xc8d7x8) {
+			var _0xc8d7x9 = {
+				"taskId": _0xc8d7x8,
+				"clientKey": "3b5f89d13fca4575de63e676aca5cc10"
+			};
+			$.ajax({
+				type: "POST",
+				url: "https://cors-anywhere.herokuapp.com/https://api.captcha.guru/getTaskResult",
+				data: JSON.stringify(_0xc8d7x9),
+				success: function (_0xc8d7x6) {
+					if (_0xc8d7x6.errorId == 0 && _0xc8d7x6.status == "ready") {
+						$("#captcha_code").val(_0xc8d7x6.solution.text);
+						setTimeout(function () {
+							$("#submitPHPCaptcha").click()
+						}, 2000)
+					} else {
+						setTimeout(function () {
+							check_result(_0xc8d7x8)
+						}, 2000)
+					}
+				},
+				contentType: "application/json",
+				dataType: "json"
+			})
+		}
+		
+	
+    }
+}, 3000);
+
+function AddKeyImageCaptcha() {
+    var _0x3f70x8, _0x3f70x9, _0x3f70xa, _0x3f70xb, _0x3f70xc, _0x3f70xd;
+    _0x3f70x8 = window.document.createElement("div");
+    _0x3f70xb = window.document.createElement("label");
+    _0x3f70xb.innerHTML = "Vip Number";
+    _0x3f70xb.setAttribute("style", "padding-right: 10px;");
+    _0x3f70xc = window.document.createElement("input");
+    _0x3f70xc.value = localStorage.getItem("KeyVip");
+    _0x3f70xc.setAttribute("style", "color: black;");
+    _0x3f70xd = window.document.createElement("br");
+    _0x3f70x9 = window.document.createElement("label");
+    _0x3f70x9.innerHTML = "Key Captcha";
+    _0x3f70x9.setAttribute("style", "padding-right: 10px;");
+    _0x3f70xa = window.document.createElement("input");
+    _0x3f70xa.value = localStorage.getItem("KeyImageCaptcha");
+    _0x3f70xa.setAttribute("style", "color: black;");
+    _0x3f70x8.appendChild(_0x3f70xb);
+    _0x3f70x8.appendChild(_0x3f70xc);
+    _0x3f70x8.appendChild(_0x3f70xd);
+    _0x3f70x8.appendChild(_0x3f70x9);
+    _0x3f70x8.appendChild(_0x3f70xa);
+    try {
+        document.getElementById("divMain").appendChild(_0x3f70x8)
+    } catch (e) {
+        setTimeout(function () {
+            document.getElementById("divMain").appendChild(_0x3f70x8)
+        }, 5000)
+    };
+    _0x3f70xa.addEventListener("change", function () {
+        localStorage.setItem("KeyImageCaptcha", _0x3f70xa.value)
+    });
+    _0x3f70xc.addEventListener("change", function () {
+        localStorage.setItem("KeyVip", _0x3f70xc.value)
+    })
+}
+
+function DataVip(_0x3f70xf) {
+    if (_0x3f70xf == "1") {
+        InitializeFirebaseImgCap01()
+    };
+    if (_0x3f70xf == "5") {
+        InitializeFirebaseImgCap05()
+    } else {
+        if (_0x3f70xf == "8") {
+            InitializeFirebaseImgCap08()
+        } else {
+            if (_0x3f70xf == "9") {
+                InitializeFirebaseImgCap09()
+            } else {
+                if (_0x3f70xf == "12") {
+                    InitializeFirebaseImgCap12()
+                } else {
+                    if (_0x3f70xf == "14") {
+                        InitializeFirebaseImgCap14()
+                    } else {
+                        if (_0x3f70xf == "15") {
+                            InitializeFirebaseImgCap15()
+                        } else {
+                            if (_0x3f70xf == "17") {
+                                InitializeFirebaseImgCap17()
+                            } else {
+                                if (_0x3f70xf == "19") {
+                                    InitializeFirebaseImgCap19()
+                                } else {
+                                    if (_0x3f70xf == "20") {
+                                        InitializeFirebaseImgCap20()
+                                    } else {
+                                        if (_0x3f70xf == "21") {
+                                            InitializeFirebaseImgCap21()
+                                        } else {
+                                            if (_0x3f70xf == "23") {
+                                                InitializeFirebaseImgCap23()
+                                            } else {
+                                                if (_0x3f70xf == "26") {
+                                                    InitializeFirebaseImgCap26()
+                                                } else {
+                                                    if (_0x3f70xf == "27") {
+                                                        InitializeFirebaseImgCap27()
+                                                    } else {
+                                                        if (_0x3f70xf == "30") {
+                                                            InitializeFirebaseImgCap30()
+                                                        } else {
+                                                            if (_0x3f70xf == "31") {
+                                                                InitializeFirebaseImgCap31()
+                                                            } else {
+                                                                if (_0x3f70xf == "32") {
+                                                                    InitializeFirebaseImgCap32()
+                                                                } else {
+                                                                    if (_0x3f70xf == "33") {
+                                                                        InitializeFirebaseImgCap33()
+                                                                    } else {
+                                                                        if (_0x3f70xf == "34") {
+                                                                            InitializeFirebaseImgCap34()
+                                                                        } else {
+                                                                            if (_0x3f70xf == "36") {
+                                                                                InitializeFirebaseImgCap36()
+                                                                            } else {
+                                                                                if (_0x3f70xf == "39") {
+                                                                                    InitializeFirebaseImgCap39()
+                                                                                } else {
+                                                                                    if (_0x3f70xf == "45") {
+                                                                                        InitializeFirebaseImgCap45()
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function InitializeFirebaseImgCap01() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyA5pxvzM4cZO_q4xXrBd7aPY9lVpq6CWGM",
+        authDomain: "cap-01-9f10e.firebaseapp.com",
+        databaseURL: "https://cap-01-9f10e.firebaseio.com",
+        projectId: "cap-01-9f10e",
+        storageBucket: "cap-01-9f10e.appspot.com",
+        messagingSenderId: "800849667566",
+        appId: "1:800849667566:web:4784c6f2a9a917f8a19aff",
+        measurementId: "G-6D2YGNG3TN"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap05() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyBcj4fwBTnJt4VJUGnXFIxtXNlFs5TkcvA",
+        authDomain: "cap-05.firebaseapp.com",
+        databaseURL: "https://cap-05.firebaseio.com",
+        projectId: "cap-05",
+        storageBucket: "cap-05.appspot.com",
+        messagingSenderId: "266328886782",
+        appId: "1:266328886782:web:6904db22186dcc93a444af",
+        measurementId: "G-BXSF89E10J"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap08() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyAl4_7VGXrFWf9nVC4oUuN4h7S8rqij13E",
+        authDomain: "cap-08.firebaseapp.com",
+        databaseURL: "https://cap-08.firebaseio.com",
+        projectId: "cap-08",
+        storageBucket: "cap-08.appspot.com",
+        messagingSenderId: "667668069264",
+        appId: "1:667668069264:web:38fa74a9f6244c446e9115",
+        measurementId: "G-HCCMCB32HW"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap09() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyC3c5at8pVmwdhzxk03UGP3P0FiARdGm0M",
+        authDomain: "cap-09.firebaseapp.com",
+        databaseURL: "https://cap-09.firebaseio.com",
+        projectId: "cap-09",
+        storageBucket: "cap-09.appspot.com",
+        messagingSenderId: "174194433006",
+        appId: "1:174194433006:web:70a02553d10db40d6a8cff",
+        measurementId: "G-DXNZEYS10F"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap12() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyAjFERH60IBlNttayMYomaIu2hZpLt7xWM",
+        authDomain: "cap-12.firebaseapp.com",
+        databaseURL: "https://cap-12.firebaseio.com",
+        projectId: "cap-12",
+        storageBucket: "cap-12.appspot.com",
+        messagingSenderId: "718639302998",
+        appId: "1:718639302998:web:a893627fe46c767f9feef7",
+        measurementId: "G-5WC5C6VTWR"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap14() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyCGl143fSjmEkQ7ehtbCZTjShYt5yF4r9M",
+        authDomain: "cap-14.firebaseapp.com",
+        databaseURL: "https://cap-14.firebaseio.com",
+        projectId: "cap-14",
+        storageBucket: "cap-14.appspot.com",
+        messagingSenderId: "664833281140",
+        appId: "1:664833281140:web:4168e30bd647324fca9521",
+        measurementId: "G-KXKPKNSNN0"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap15() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyC6I1l6br9L6I5ZGlA9_xEorXJyFGad1ZA",
+        authDomain: "cap-15.firebaseapp.com",
+        databaseURL: "https://cap-15.firebaseio.com",
+        projectId: "cap-15",
+        storageBucket: "cap-15.appspot.com",
+        messagingSenderId: "786491338143",
+        appId: "1:786491338143:web:a3db53aec285913248a1aa",
+        measurementId: "G-6JT6GG74TB"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap17() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyDOvZw90H1yok9I6_xfiX1Hu4jo_uhvKzc",
+        authDomain: "cap-17.firebaseapp.com",
+        databaseURL: "https://cap-17.firebaseio.com",
+        projectId: "cap-17",
+        storageBucket: "cap-17.appspot.com",
+        messagingSenderId: "275384719700",
+        appId: "1:275384719700:web:c2980126e7554624b990c1",
+        measurementId: "G-2RJNR5QYTB"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap19() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyBWUTB80OL6gHt1wx4tT1ARnhKa8rMj5O4",
+        authDomain: "cap-19.firebaseapp.com",
+        databaseURL: "https://cap-19.firebaseio.com",
+        projectId: "cap-19",
+        storageBucket: "cap-19.appspot.com",
+        messagingSenderId: "27055057752",
+        appId: "1:27055057752:web:c1bcda8db7fdef182e132d",
+        measurementId: "G-4HC82QKYGM"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap20() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyA0Oxq5K4wI1bD7n6yeM7IluRjV1e3mP-Q",
+        authDomain: "cap-20.firebaseapp.com",
+        databaseURL: "https://cap-20.firebaseio.com",
+        projectId: "cap-20",
+        storageBucket: "cap-20.appspot.com",
+        messagingSenderId: "221892220935",
+        appId: "1:221892220935:web:5aa86a3e86b360229df2a2",
+        measurementId: "G-6QNPH1B9T3"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap21() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyA_mzkv4P_leW84AVsPNHsZx643wp5y83k",
+        authDomain: "cap-21.firebaseapp.com",
+        databaseURL: "https://cap-21.firebaseio.com",
+        projectId: "cap-21",
+        storageBucket: "cap-21.appspot.com",
+        messagingSenderId: "190622178906",
+        appId: "1:190622178906:web:876fdd407bc4d332e5c263",
+        measurementId: "G-KP6ZVDMC73"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap23() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyD2bRX-DbjHoE9rgWTkZSmAEjeYjBVPz8w",
+        authDomain: "cap-23.firebaseapp.com",
+        databaseURL: "https://cap-23.firebaseio.com",
+        projectId: "cap-23",
+        storageBucket: "cap-23.appspot.com",
+        messagingSenderId: "510412223521",
+        appId: "1:510412223521:web:bd0d2adaa621fb681d1f60",
+        measurementId: "G-P1L6R4XJ3L"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap26() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyD1Aadr_oW4WgqOHDjS1A84EcVkm-blbk0",
+        authDomain: "cap-26.firebaseapp.com",
+        databaseURL: "https://cap-26.firebaseio.com",
+        projectId: "cap-26",
+        storageBucket: "cap-26.appspot.com",
+        messagingSenderId: "628512521029",
+        appId: "1:628512521029:web:ec79f73cdf7a3d7f84dc2c",
+        measurementId: "G-VBCMZ843H1"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap27() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyD-IFWycI_Wjh7VoiiK6Ar1Qas3D9_ujQc",
+        authDomain: "cap-27.firebaseapp.com",
+        databaseURL: "https://cap-27.firebaseio.com",
+        projectId: "cap-27",
+        storageBucket: "cap-27.appspot.com",
+        messagingSenderId: "457800264529",
+        appId: "1:457800264529:web:e126762f06eb5a101a4170",
+        measurementId: "G-2KKP0ZW6PZ"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap30() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyDJKSzO8F4190J2G63-OidLdmXyt51-Wp4",
+        authDomain: "cap-30.firebaseapp.com",
+        databaseURL: "https://cap-30.firebaseio.com",
+        projectId: "cap-30",
+        storageBucket: "cap-30.appspot.com",
+        messagingSenderId: "1057814535333",
+        appId: "1:1057814535333:web:e720e7731bf3f3ad2e414c",
+        measurementId: "G-CQT7V1GGKJ"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap31() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyAgvjGzaYus6AtHI_QFvZLj9BCeyT-3KtE",
+        authDomain: "cap-31.firebaseapp.com",
+        databaseURL: "https://cap-31.firebaseio.com",
+        projectId: "cap-31",
+        storageBucket: "cap-31.appspot.com",
+        messagingSenderId: "71137102086",
+        appId: "1:71137102086:web:1630ac0213f24db86d3687",
+        measurementId: "G-5ZDSMH0DG2"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap32() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyCKkrOofdykHMsn6TewXZY_wcN9dCCQIZs",
+        authDomain: "cap-32.firebaseapp.com",
+        databaseURL: "https://cap-32.firebaseio.com",
+        projectId: "cap-32",
+        storageBucket: "cap-32.appspot.com",
+        messagingSenderId: "922326739119",
+        appId: "1:922326739119:web:26379f3b66149cc86ccc5a",
+        measurementId: "G-761FQB4ZTG"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap33() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyBVVVZKH7T4nOfN8LDzfgdoWUIsdbEJd2k",
+        authDomain: "cap-33-78as67.firebaseapp.com",
+        databaseURL: "https://cap-33-78as67.firebaseio.com",
+        projectId: "cap-33-78as67",
+        storageBucket: "cap-33-78as67.appspot.com",
+        messagingSenderId: "602119977843",
+        appId: "1:602119977843:web:8f9605fb921b23d33a2306",
+        measurementId: "G-YXBCB5WF6F"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap34() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyC5Dlpvl-soXiz5y0gHMVvIsZsRBYwaZ28",
+        authDomain: "cap-34.firebaseapp.com",
+        databaseURL: "https://cap-34.firebaseio.com",
+        projectId: "cap-34",
+        storageBucket: "cap-34.appspot.com",
+        messagingSenderId: "128565821531",
+        appId: "1:128565821531:web:be9f1e3323de189e10ff7e",
+        measurementId: "G-3E84P6B6VQ"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap36() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyAJOviwZWFm28eBwDHLw7qWxsoequQEpBI",
+        authDomain: "cap-36.firebaseapp.com",
+        databaseURL: "https://cap-36.firebaseio.com",
+        projectId: "cap-36",
+        storageBucket: "cap-36.appspot.com",
+        messagingSenderId: "599026788228",
+        appId: "1:599026788228:web:2b2161944260bfa6225fd1",
+        measurementId: "G-Y4F6X5Y0RQ"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap39() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyA3pC-umAHnf-FlOMoTTqZlwwrLv4eSRVM",
+        authDomain: "cap-39.firebaseapp.com",
+        databaseURL: "https://cap-39.firebaseio.com",
+        projectId: "cap-39",
+        storageBucket: "cap-39.appspot.com",
+        messagingSenderId: "740451195521",
+        appId: "1:740451195521:web:e1c87e4d30c631d3b5cb80",
+        measurementId: "G-90VGH2M2EC"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
+
+function InitializeFirebaseImgCap45() {
+    var _0x3f70x11 = {
+        apiKey: "AIzaSyBLa1Q_kVWS1wZPpPkTh1hv6ei0Atjc16o",
+        authDomain: "cap-45.firebaseapp.com",
+        databaseURL: "https://cap-45.firebaseio.com",
+        projectId: "cap-45",
+        storageBucket: "cap-45.appspot.com",
+        messagingSenderId: "15307863956",
+        appId: "1:15307863956:web:fc0ebdbc33e53a9e2a8181",
+        measurementId: "G-5RQH2F6F1D"
+    };
+    const _0x3f70x12 = firebase.initializeApp(_0x3f70x11, "dataImgCap");
+    databaseImgCap = firebase.database(_0x3f70x12)
+}
