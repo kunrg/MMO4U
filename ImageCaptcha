@@ -56,7 +56,7 @@ var checkCap = setInterval(function () {
 			};
 			$.ajax({
 				type: "POST",
-				url: "https://api.captcha.guru/getTaskResult",
+				url: "https://cors-anywhere.herokuapp.com/https://api.captcha.guru/getTaskResult",
 				data: JSON.stringify(_0xc8d7x9),
 				success: function (_0xc8d7x6) {
 					if (_0xc8d7x6.errorId == 0 && _0xc8d7x6.status == "ready") {
