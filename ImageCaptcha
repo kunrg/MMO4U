@@ -35,7 +35,7 @@ var checkCap = setInterval(function () {
 			};
 			$.ajax({
 				type: "POST",
-				url: "https://api.captcha.guru/createTask",
+				url: "https://cors-anywhere.herokuapp.com/https://api.captcha.guru/createTask",
 				data: JSON.stringify(_0xc8d7x5),
 				success: function (_0xc8d7x6) {
 					if (_0xc8d7x6.errorId == 0) {
